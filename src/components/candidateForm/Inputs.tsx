@@ -15,7 +15,6 @@ interface InputsProps {
   required: boolean;
   control: any;
   defaultValue?: any;
-  // defaultValue?: string | number | object | null;
 }
 
 const Inputs = ({
@@ -28,7 +27,7 @@ const Inputs = ({
   defaultValue,
   control,
 }: InputsProps) => {
-  if (name === "activeStep") {
+  if (type === "select") {
     return (
       <LabelWrapper
         name={name}
@@ -40,13 +39,12 @@ const Inputs = ({
           name={name}
           control={control}
           className="form-control"
-          defaultValue={defaultValue?.[name]}
           rules={{ required: required }}
+          defaultValue={defaultValue ? defaultValue : null}
           render={(field) => (
             <Select
               {...field}
               options={choiceList}
-              defaultValue={defaultValue?.[name]}
               placeholder="Välj"
               styles={{
                 control: (provided: any) => ({
@@ -69,7 +67,7 @@ const Inputs = ({
           type={type}
           ref={register({ required })}
           style={{ border: errors?.[name] ? "1px solid red" : "" }}
-          defaultValue={defaultValue?.[name]}
+          defaultValue={defaultValue ? defaultValue : null}
         />
       </>
     </LabelWrapper>

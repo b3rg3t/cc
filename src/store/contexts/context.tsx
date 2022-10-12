@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-import { reducer } from "../reducers/reducer";
+import { ActionType, reducer } from "../reducers/reducer";
 
 import { choiceListValue } from "../../components/utils/choiceList";
 import { defaultCandidates } from "../../components/utils/defaultCandidates";
@@ -15,11 +15,19 @@ export type candidate = {
 };
 
 export type InitialStateType = {
-  candidates: candidate[] | null;
+  state: {
+    candidates: candidate[] | null;
+    filteredCandidates: candidate[] | null;
+    searchText: string;
+  };
 };
 
 export const initialState = {
-  candidates: defaultCandidates,
+  state: {
+    candidates: defaultCandidates,
+    filteredCandidates: null,
+    searchText: ""
+  },
 };
 
 const Context = createContext<{
@@ -30,8 +38,8 @@ const Context = createContext<{
   dispatch: () => null,
 });
 
-const mainReducer = ({ candidates }: InitialStateType, action: any) => ({
-  candidates: reducer(candidates, action),
+const mainReducer = ({ state }: InitialStateType, action: ActionType) => ({
+  state: reducer(state, action),
 });
 
 const Provider = ({ children }: any) => {

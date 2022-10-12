@@ -1,7 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback } from "react";
 import { Link } from "react-router-dom";
 
-import { Context } from "../../store/contexts/context";
+import { candidate, Context } from "../../store/contexts/context";
+
+import SearchInList from "./SearchInList";
+import TableRow from "./TableRow";
 
 const ListOfCandidates = () => {
   const { state } = useContext(Context);
@@ -15,59 +18,48 @@ const ListOfCandidates = () => {
     "Aktuellt rekryteringssteg",
     "action",
   ];
-  const { candidates } = state;
+  const { candidates, filteredCandidates } = state.state;
 
-  const handleRemoveCandidate = (candidateId: string) => {
-    console.log(candidateId);
-  };
+  const renderTableRow = useCallback(
+    (candidate: candidate, index: number) => {
+      return (
+        <TableRow key={candidate.id} index={index} candidate={candidate} />
+      );
+    },
+    // eslint-disable-next-line
+    [candidates, filteredCandidates]
+  );
 
+  if (!candidates?.length) {
+    return (
+      <div className="d-flex justify-content-center align-items-center flex-column">
+        <p>Inga kanditar skapade..</p>
+        <Link to="/new-candidate">Skapa kandidat?</Link>
+      </div>
+    );
+  }
   return (
-    <table className="table border-left border-right border-bottom">
-      <tbody>
-        <tr>
-          {columns.map((column, index) => (
-            <th key={index} scope="col">
-              {column}
-            </th>
-          ))}
-        </tr>
-        {candidates?.map((candidate: any, index) => (
-          <tr key={candidate.id}>
-            <th scope="row">{++index}</th>
-            {Object.keys(candidate).map((can, i) => {
-              if (i === 0) {
-                return <React.Fragment key={i}></React.Fragment>;
-              }
-              return (
-                <td key={i}>
-                  {candidate?.[can]?.label
-                    ? candidate?.[can]?.label
-                    : candidate?.[can]}
-                </td>
-              );
-            })}
-            <td>
-              <div className="d-flex">
-                <Link
-                  title="Ända kandidat"
-                  className="btn btn-info btn-sm mr-1"
-                  to={`/candidate/${candidate.id}`}
-                >
-                  Ändra
-                </Link>
-                <button
-                  title="Ta bort kandidat"
-                  className="btn btn-danger btn-sm"
-                  onClick={() => handleRemoveCandidate(candidate.id)}
-                >
-                  Ta bort
-                </button>
-              </div>
-            </td>
+    <>
+      <SearchInList candidates={candidates} />
+      <table className="table border-left border-right border-bottom">
+        <tbody>
+          <tr>
+            {columns.map((column, index) => (
+              <th key={index} scope="col">
+                {column}
+              </th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+          {filteredCandidates
+            ? filteredCandidates.map((candidate, index) =>
+                renderTableRow(candidate, index)
+              )
+            : candidates?.map((candidate, index) =>
+                renderTableRow(candidate, index)
+              )}
+        </tbody>
+      </table>
+    </>
   );
 };
 

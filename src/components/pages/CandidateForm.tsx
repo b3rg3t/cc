@@ -2,7 +2,7 @@ import React from "react";
 
 import { useParams } from "react-router-dom";
 
-import MainForm from "../forms/MainForm";
+import MainForm from "../candidateForm/MainForm";
 import MainWrapper from "../layout/MainWrapper";
 import TopBar from "../layout/TopBar";
 

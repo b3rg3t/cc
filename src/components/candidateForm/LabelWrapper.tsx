@@ -15,9 +15,11 @@ const LabelWrapper = ({
   name,
   errors,
 }: LabelWrapperProps) => (
-  <label htmlFor={name}>
-    {`${label}${required ? " *" : ""}`}
-    {children}
+  <>
+    <label htmlFor={name}>
+      {`${label}${required ? " *" : ""}`}
+      {children}
+    </label>
     {errors?.[name] && (
       <div className="d-flex w-100 justify-content-center">
         <p className="text-danger mb-0">
@@ -25,7 +27,7 @@ const LabelWrapper = ({
         </p>
       </div>
     )}
-  </label>
+  </>
 );
 
 export default LabelWrapper;

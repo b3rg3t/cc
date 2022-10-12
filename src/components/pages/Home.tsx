@@ -1,4 +1,5 @@
 import React from "react";
+
 import MainWrapper from "../layout/MainWrapper";
 import TopBar from "../layout/TopBar";
 import ListOfCandidates from "../lists/ListOfCandidates";

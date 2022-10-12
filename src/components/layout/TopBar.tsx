@@ -9,10 +9,10 @@ interface TopBarProps {
 
 const TopBar = ({ displayLinks }: TopBarProps) => {
   return (
-    <header className="border-bottom bg-light p-2 d-flex justify-content-between">
+    <header className="border-bottom bg-light p-2 d-flex justify-content-between flex-wrap">
       <h5 className="my-1">Rekryteringskandidater</h5>
       {displayLinks && (
-        <ul className="list-unstyled mb-0">
+        <ul className="list-unstyled mb-0 d-flex align-items-center">
           {links.map(({ to, label }, index) => (
             <li key={index}>
               <Link to={to}>{label}</Link>
