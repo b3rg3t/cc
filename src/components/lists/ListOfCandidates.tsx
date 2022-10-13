@@ -16,7 +16,7 @@ const ListOfCandidates = () => {
     "Email",
     "Adress",
     "Aktuellt rekryteringssteg",
-    "action",
+    "",
   ];
   const { candidates, filteredCandidates } = state.state;
 

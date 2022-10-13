@@ -13,20 +13,12 @@ const SearchInList = ({ candidates }: SearchInListProps) => {
   const [searchValue, setSearchValue] = useState("");
   const { dispatch } = useContext(Context);
 
-  //   const { searchText } = state.state;
-
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (candidates && searchValue) {
-      const transformText = searchValue.toLowerCase().trim();
-
-      const filteredCandidates = candidates.filter((candidate) => {
-        return candidate.name.toLowerCase().trim().includes(transformText);
-      });
-
       dispatch({
         type: SET_FILTERED_CANDIDATE_LIST,
-        payload: { values: { searchText: searchValue, filteredCandidates } },
+        payload: { values: { searchText: searchValue } },
       });
     } else {
       dispatch({
@@ -34,6 +26,7 @@ const SearchInList = ({ candidates }: SearchInListProps) => {
       });
     }
   };
+
   const handleClearSearchValue = () => {
     setSearchValue("");
     dispatch({

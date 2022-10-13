@@ -15,7 +15,9 @@ const TopBar = ({ displayLinks }: TopBarProps) => {
         <ul className="list-unstyled mb-0 d-flex align-items-center">
           {links.map(({ to, label }, index) => (
             <li key={index}>
-              <Link to={to}>{label}</Link>
+              <Link to={to} className="btn btn-primary btn-sm">
+                {label}
+              </Link>
             </li>
           ))}
         </ul>

@@ -4,7 +4,7 @@ import MainWrapper from "../layout/MainWrapper";
 import TopBar from "../layout/TopBar";
 import ListOfCandidates from "../lists/ListOfCandidates";
 
-const Home = () => {
+const ListPage = () => {
   return (
     <>
       <TopBar displayLinks />
@@ -15,4 +15,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ListPage;

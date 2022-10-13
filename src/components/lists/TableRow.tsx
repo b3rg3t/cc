@@ -17,15 +17,29 @@ const TableRow = ({ candidate, index }: TableRowProps) => {
     dispatch({ type: REMOVE_CANDIDATE, payload: { values: candidateId } });
   };
 
+  const listStyle = {
+    number: { width: "50px" },
+    name: { width: "200px" },
+    age: { width: "50px" },
+    email: { width: "250px" },
+    adress: { width: "300px" },
+    activeStep: { width: "230px" },
+    action: { width: "150px" },
+  };
+
   return (
     <tr>
-      <th scope="row">{++index}</th>
-      <td>{candidate.name}</td>
-      <td>{candidate.age}</td>
-      <td>{candidate.email}</td>
-      <td>{candidate.adress}</td>
-      <td>{candidate?.activeStep ? candidate?.activeStep?.label : ""}</td>
-      <td>
+      <th scope="row" style={listStyle.number}>
+        {++index}
+      </th>
+      <td style={listStyle.name}>{candidate.name}</td>
+      <td style={listStyle.age}>{candidate.age}</td>
+      <td style={listStyle.email}>{candidate.email}</td>
+      <td style={listStyle.adress}>{candidate.adress}</td>
+      <td className="text-truncate" style={listStyle.activeStep}>
+        {candidate?.activeStep ? candidate?.activeStep?.label : ""}
+      </td>
+      <td style={listStyle.action}>
         <div className="d-flex">
           <Link
             title="Ända kandidat"

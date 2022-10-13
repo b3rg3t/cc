@@ -2,7 +2,7 @@ import React from "react";
 
 import { Route, Routes } from "react-router-dom";
 
-import Home from "../components/pages/Home";
+import ListPage from "../components/pages/ListPage";
 import CandidateForm from "../components/pages/CandidateForm";
 import NotFound from "../components/pages/NotFound"
 
@@ -14,7 +14,7 @@ const AllRoutes = () => {
     <Provider>
       <>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ListPage />} />
           <Route path={links[0].to} element={<CandidateForm />} />
           <Route path="/candidate/:id" element={<CandidateForm />} />
           <Route path='*' element={<NotFound />} />

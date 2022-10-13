@@ -20,4 +20,28 @@ export const defaultCandidates: candidate[] = [
     adress: "",
     activeStep: choiceList[1],
   },
+  {
+    id: uuid(),
+    name: "Pelle",
+    age: "19",
+    email: "pelle@mail.com",
+    adress: "",
+    activeStep: choiceList[4],
+  },
+  {
+    id: uuid(),
+    name: "Karl",
+    age: "31",
+    email: "karl@mail.com",
+    adress: "",
+    activeStep: choiceList[1],
+  },
+  {
+    id: uuid(),
+    name: "Gunnar",
+    age: "",
+    email: "gunnar@mail.com",
+    adress: "",
+    activeStep: choiceList[0],
+  },
 ];

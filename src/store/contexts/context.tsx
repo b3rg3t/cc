@@ -8,7 +8,7 @@ import { defaultCandidates } from "../../components/utils/defaultCandidates";
 export type candidate = {
   id: string;
   name: string;
-  age: number | string;
+  age: string;
   email: string;
   adress: string;
   activeStep: choiceListValue | null;
