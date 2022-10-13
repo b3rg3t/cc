@@ -1,0 +1,28 @@
+.app {
+  max-height: 100vh;
+  max-width: 100vw;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+#main-form {
+  width: 600px;
+  max-width: 600px;
+}
+
+.search-input {
+  width: 300px;
+}
+
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
